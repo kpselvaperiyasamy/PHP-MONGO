@@ -8,6 +8,13 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: mongopwd
+      MONGO_INITDB_DATABASE: sample-database
+    ports:
+      -  27017:27017
+    volumes:
+      -  ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+    networks:
+      - backend
 
   websvr:
     build: ./work
@@ -20,6 +27,8 @@ services:
       - mongo
     depends_on:
       - mongo
+    networks:
+      -  backend
 
   mongo-express:
     image: mongo-express
@@ -34,3 +43,6 @@ services:
       - mongo
     depends_on:
       - mongo
+
+networks:
+  backend:
