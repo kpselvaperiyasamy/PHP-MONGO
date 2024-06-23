@@ -5,7 +5,7 @@ RUN pecl install mongodb
 RUN docker-php-ext-enable mongodb.so
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN composer require --working-dir=/var/www mongodb/mongodb
-COPY /work/src /var/www/html
+COPY /src /var/www/html
 
 EXPOSE 80
 
