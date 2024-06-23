@@ -8,7 +8,7 @@
 	//test the post data
 	echo "<p>Name: $name and Age: $age</p>";
 	
-	$connection = new MongoDB\Client("mongodb://root:mongopwd@mongo:27017");
+	$connection = new MongoDB\Client("mongodb://selva:selva123@mongo:27017");
 	
 	$db = $connection->gettingstarted;
 	echo "db 'gettingstarted' selected<br><br>";
