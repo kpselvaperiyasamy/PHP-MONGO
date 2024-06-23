@@ -19,8 +19,6 @@ services:
   websvr:
     build: ./work
     container_name: web4mongo
-    volumes:
-      - ./work/src:/var/www/html
     ports:
       - 80:80
     links:
