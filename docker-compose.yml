@@ -43,6 +43,8 @@ services:
       - mongo
     depends_on:
       - mongo
+    networks:
+      -  backend
 
 networks:
   backend:
