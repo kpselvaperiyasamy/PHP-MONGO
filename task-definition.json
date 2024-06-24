@@ -1,0 +1,52 @@
+{
+    "family": "php-mongo-task",
+    "executionRoleArn":"arn:aws:iam::743466557782:role/sample-test-ecs",
+    "networkMode": "awsvpc",
+    "containerDefinitions": [
+        {
+            "name": "php-container",
+            "image": "743466557782.dkr.ecr.ap-south-1.amazonaws.com/my-php:1.0",
+            "essential": true,
+            "memory": 512,
+            "cpu": 256,
+            "portMappings": [
+                {
+                    "containerPort": 80,
+                    "hostPort": 80
+                }
+            ],
+            "environment": [
+                {
+                        "name":"MONGO_URL",
+                        "value":"mongodb://selva:selva123@mongodb:27017"
+                }
+             ],
+            "logConfiguration": {
+                    "logDriver": "awslogs",
+                    "options": {
+                            "awslogs-group":"/ecs/my-task",
+                            "awslogs-region":"ap-south-1",
+                            "awslogs-stream-prefix":"ecs"
+                    }
+                }
+        },
+       {
+            "name": "mongodb",
+            "image": "743466557782.dkr.ecr.ap-south-1.amazonaws.com/my-mongo:1.0",
+            "essential": true,
+            "memory": 512,
+            "cpu": 256,
+            "portMappings": [
+                {
+                    "containerPort": 27017,
+                    "hostPort": 27017
+                }
+            ]
+        }
+    ],
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "cpu": "512",
+    "memory": "1024"
+}
