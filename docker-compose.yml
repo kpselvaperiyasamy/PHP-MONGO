@@ -25,6 +25,11 @@ services:
       - mongo
     depends_on:
       - mongo
+    environment:
+      MONGODB_USER: selva
+      MONGODB_PASS: selva123
+      MONGODB_HOST: mongo
+      MONGODB_PORT: 27017
     networks:
       -  backend
 
@@ -42,7 +47,7 @@ services:
     depends_on:
       - mongo
     networks:
-      -  backend
+      - backend
 
 networks:
   backend:
